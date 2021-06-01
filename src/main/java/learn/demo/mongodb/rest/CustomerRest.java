@@ -35,12 +35,12 @@ public class CustomerRest {
 	}
 
 	@GetMapping(path = "/")
-	public List<Customer> findAll() {
+	public List<Customer> findAll(@RequestParam(required = false,name = "firstName")Optional<String> firstName) {
+		if(firstName.isPresent()) {
+			return repository.findByFirstName(firstName.get());
+		}
 		return repository.findAll();
 	}
-	@GetMapping(path = "/?firstName={firstName}")
-	public List<Customer> findByName(@RequestParam(required = true,name = "firstName")String firstName) {
-		return repository.findByFirstName(firstName);
-	}
+
 
 }
