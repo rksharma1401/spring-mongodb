@@ -19,6 +19,13 @@ public class Customer {
 		this.lastName = lastName;
 	}
 
+	public Customer(String firstName, String lastName, Address address) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

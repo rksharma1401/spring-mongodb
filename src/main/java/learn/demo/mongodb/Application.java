@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import learn.demo.mongodb.entity.Address;
 import learn.demo.mongodb.entity.Customer;
 import learn.demo.mongodb.repo.CustomerRepository;
 
@@ -26,7 +27,7 @@ public class Application implements CommandLineRunner{
 		// save a couple of customers
 		repository.save(new Customer("Alice", "Smith"));
 		repository.save(new Customer("Bob", "Smith"));
-
+		repository.save(new Customer("Bob", "Smith",new Address("Limbodi", "Indore", "MP")));
 		// fetch all customers
 		System.out.println("Customers found with findAll():");
 		System.out.println("-------------------------------");
