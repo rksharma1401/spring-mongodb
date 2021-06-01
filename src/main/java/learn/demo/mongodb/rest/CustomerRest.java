@@ -26,7 +26,7 @@ public class CustomerRest {
 		return repository.save(cust);
 	}
 	@GetMapping(path = "/{id}")
-	public Optional<Customer> findById(@PathParam("{id}") String id) {
+	public Optional<Customer> findById(@PathParam("id") String id) {
 		return repository.findById(id);
 	}
 	@GetMapping(path ="/" )
