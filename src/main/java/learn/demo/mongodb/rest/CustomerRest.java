@@ -34,13 +34,12 @@ public class CustomerRest {
 		return repository.findById(id);
 	}
 
-	@GetMapping(path = "/")
-	public List<Customer> findAll(@RequestParam(required = false,name = "firstName")Optional<String> firstName) {
-		if(firstName.isPresent()) {
+	@GetMapping(path = "")
+	public List<Customer> findAll(@RequestParam(required = false, name = "firstName") Optional<String> firstName) {
+		if (firstName.isPresent()) {
 			return repository.findByFirstName(firstName.get());
 		}
 		return repository.findAll();
 	}
-
 
 }
