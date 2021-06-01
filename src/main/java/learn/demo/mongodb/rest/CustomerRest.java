@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import learn.demo.mongodb.entity.Customer;
@@ -36,6 +37,10 @@ public class CustomerRest {
 	@GetMapping(path = "/")
 	public List<Customer> findAll() {
 		return repository.findAll();
+	}
+	@GetMapping(path = "/?firstName={firstName}")
+	public List<Customer> findByName(@RequestParam(required = true,name = "firstName")String firstName) {
+		return repository.findByFirstName(firstName);
 	}
 
 }
