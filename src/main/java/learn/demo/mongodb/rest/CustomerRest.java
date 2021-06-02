@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import learn.demo.mongodb.entity.Customer;
+import learn.demo.mongodb.repo.CustomerQueryRepository;
 import learn.demo.mongodb.repo.CustomerRepository;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
 @RequestMapping(path = "/customer")
@@ -23,6 +23,8 @@ public class CustomerRest {
 
 	@Autowired
 	private CustomerRepository repository;
+	@Autowired
+	private CustomerQueryRepository queryRepo;
 
 	@PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Customer save(@RequestBody Customer cust) {
@@ -42,5 +44,12 @@ public class CustomerRest {
 		}
 		return repository.findAll();
 	}
-
+	@GetMapping(path = "/query/")
+	public List<Customer> findAllByQuery(@RequestParam(required = false, name = "firstName") Optional<String> firstName) {
+		if (firstName.isPresent()) {
+			return queryRepo.findByFirstName(firstName.get());
+		}
+		return queryRepo.findAll();
+	}
+	
 }
