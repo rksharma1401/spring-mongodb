@@ -8,8 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import learn.demo.mongodb.entity.Address;
 import learn.demo.mongodb.entity.Customer;
 import learn.demo.mongodb.repo.CustomerRepository;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
+@EnableSwagger2
 public class Application implements CommandLineRunner{
 
 	@Autowired
@@ -27,7 +29,9 @@ public class Application implements CommandLineRunner{
 		// save a couple of customers
 		repository.save(new Customer("Alice", "Smith"));
 		repository.save(new Customer("Bob", "Smith"));
-		repository.save(new Customer("Bob", "Smith",new Address("Limbodi", "Indore", "MP")));
+		repository.save(new Customer("Bob", "Zith"));
+		repository.save(new Customer("Bob", "Abth"));
+		repository.save(new Customer("Dobby", "Dude",new Address("Limbodi", "Indore", "MP")));
 		// fetch all customers
 		System.out.println("Customers found with findAll():");
 		System.out.println("-------------------------------");

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import learn.demo.mongodb.entity.Customer;
 import learn.demo.mongodb.repo.CustomerRepository;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
 @RequestMapping(path = "/customer")
