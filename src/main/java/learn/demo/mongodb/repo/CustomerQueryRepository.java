@@ -11,10 +11,9 @@ import learn.demo.mongodb.entity.Customer;
 public interface CustomerQueryRepository
 		extends MongoRepository<Customer, String>, QuerydslPredicateExecutor<Customer> {
 
-	@Query(sort="{lastName : -1}")
+	@Query(sort="{lastName : 1}")
 	public List<Customer> findByFirstName(String firstName);
 
 	public List<Customer> findByLastName(String lastName);
-	@Query(sort="{lastName : 1}")
-	public List<Customer> findAll();
+	 
 }
