@@ -15,5 +15,6 @@ public interface CustomerQueryRepository
 	public List<Customer> findByFirstName(String firstName);
 
 	public List<Customer> findByLastName(String lastName);
-
+	@Query(sort="{lastName : 1}")
+	public List<Customer> findAll();
 }
